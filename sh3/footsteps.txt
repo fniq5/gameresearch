@@ -1,0 +1,30 @@
+Two footstep sequences in church
+
+0x0056DB70 Procedure: Top floor footsteps activation control
+0x0056A5C0 Procedure: Bottom floor footsteps activation control
+
+
+ 0x0056DBE9 <- Controls RNG-based activation (proof of 1 in 3)
+ 0x0056A63C <- For BottomFloor (same)
+ 
+
+TopFloorFootsteps:
+Timer        0x00BBBC0C float 
+#OfFootsteps 0x00BBBC10 u32
+State        0x00BBBC28 u32
+
+Duration 20 seconds + 1 frame. One footstep every two seconds.
+Total 10 footsteps.
+
+BottomFloor: 22 seconds + 1 frame. One footstep every two seconds. Total 11.
+
+??? 0x0715D370
+
+State:
+ 0 - Not Played (Door OK)
+ 1 - Playing (Can't)
+ 2 - Played (Door OK)
+
+To control activation of the footsteps:
+if(1 >= #OfTimes): activate();
+else if(0 == (3 % sh3_random())): activate();

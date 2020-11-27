@@ -1,0 +1,43 @@
+sh3 RNG notes
+sh3pc.exe+6Ce66DF db RiddleLevel
+
+18DC20 DecideKeyPad()
+26405E AdvanceRNG()
+20BC50 KeyPadThing()
+
+
+AdvanceRNG():
+Seed = (Seed * 0x343FD) + 0x269EC3
+
+return (Seed >> 16) & 0x7FFF
+Top 16 bits excluding sign
+
+KeyPadThing(): //Makes a 31-bit RNG number
+A = AdvanceRNG()
+B = AdvanceRNG()
+C = AdvanceRNG()
+C = ((((C&1) << 15) | B) << 15) | A
+return C
+
+RNG is using built-in rand() from 
+MSVC library 2003
+srands with time(NULL) I think
+there is a conditional to srand(0x3039)
+
+
+Clock:
+Hour = seed() % 12
+Minute = seed() % 60
+internally BCD both into the 2-byte hex HHMM
+
+
+
+
+PS2:
+0x00361970: RNG Seed
+
+0x0019af98: AdvanceRNG() (Same as SH2)
+
+01F70814: KeyPadPen()
+
+((Seed * 0x41C64E6D) + 0x3039) & 0x7FFFFFFF

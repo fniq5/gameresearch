@@ -1,0 +1,42 @@
+>>> EASY MODE <<<
+
+States
+2 = Roaming 
+3 = Hunting (Follow & Attack Heather)
+
+6 = Quick Attack
+7 = Grab Attack (Nibble at feet)
+8 = Basic Attack (Lunge)
+
+4FC670 - set_attack_action(slurper);
+
+4F5480 - decide_attack_pattern(slurper);
+
+When sense a vibration, choose an attack pattern:
+10% - Charge
+45% - Grab
+45% - Basic
+The current attack pattern is not the same as Slurper's ActionState.
+This will trigger each time Heather makes a noise.
+
+Quick turn if Heather is behind Slurper.
+
+Slurpers sense various sounds:
+Turn, QuickTurn, Run, Walk, Strafe, Guns
+
+Slurpers will not sense Heather if she is sneaking! (AIM Button)
+
+Vibration/Sound will engage Slurpers within a certain radius:
+if(sensed(Slurper, Vibration)) {
+  decide_attack(Slurper);
+  set_action(Slurper, HUNTING); //3
+}
+
+The distance is determined by the type of vibration.
+Run and guns are the loudest!
+It can hear the knife hit the wall too...
+
+
+No known difference in behavior between Slurper types (?)
+Percentages are not different, atleast.
+Perhaps sense ability changes.

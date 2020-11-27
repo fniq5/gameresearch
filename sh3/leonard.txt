@@ -1,0 +1,23 @@
+Damage per pellet determined by Leonard animation state
+
+Number of pellets hit is random???
+
+Pellet do 50, 100, or 150 damage
+
+Leonard take 66% damage when standing 
+
+UP+WALK+ACTION always do max damage from standing (396, 4pellet)
+
+Frames 1393~1395 best damage. Exact damage determined by which 
+frame each pellet connects.
+
+Shotgun damage occurs across six frames, one for each pellet.
+Which is why damage is seemingly more random 
+when fire rapidly
+
+
+HP random from 2350~2650
+
+
+898D24 - Leonard Animation Frame
+

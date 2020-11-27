@@ -1,0 +1,8 @@
+Strong Attack 30% Chance
+(Proof: 0054CFE5)
+
+3 = Weak Attack
+4 = Strong Attack
+
+When approaching from certain angles (behind),
+It is always a weak attack
